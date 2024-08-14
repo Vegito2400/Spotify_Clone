@@ -1,0 +1,22 @@
+.bg-grey{
+    background-color: #121212;
+    color: white;
+}
+
+.invert{
+    filter: invert(1);
+}
+
+.flex{
+    display: flex;
+}
+
+.zero{
+    margin: 0px;
+    padding: 0px;
+    
+}
+
+.cursor-ptr{
+    cursor: pointer;
+}
