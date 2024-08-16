@@ -32,6 +32,9 @@ function secondsToMinutesSeconds(seconds) {
 
 let play = document.getElementById("pause");
 let currentSong = new Audio();
+let bgnd = document.getElementById("bgnd");
+let hambmenu= document.getElementById('hamburger');
+let tempmenu = document.getElementById('hambgr');
 
 const playmusic = (track)=>{
     currentSong.src = "/Songs/"+ track;
@@ -64,6 +67,25 @@ async function main() {
 
         })
     })
+    let songlist = document.querySelector(".songlist").getElementsByTagName("ul")[0]
+    for(const song of songs){
+        songlist.innerHTML = songlist.innerHTML + `<li><div class="lfside flex"><img class="invert" width="34" src="SVGs/music.svg" alt="">
+                            <div class="info">
+                                <div hidden> ${song.replaceAll("%20", " ")}</div>
+                                <div> ${song.replaceAll("%20", " ").replace(".mp3"," ")}</div>
+                                <div class="artist">Spotify</div>
+                            </div>
+                            </div>
+                            <div class="playnow">
+                                <img class="invert" src="SVGs/play.svg" alt="">
+                            </div> </li>`;
+    }
+    Array.from(document.querySelector(".songlist").getElementsByTagName("li")).forEach(e => {
+        e.addEventListener("click", element => {
+            playmusic(e.querySelector(".info").firstElementChild.innerHTML.trim())
+
+        })
+    })
 
     play.addEventListener("click", () => {
         if (currentSong.paused) {
@@ -85,6 +107,19 @@ async function main() {
         document.querySelector(".circle").style.left = percent + "%";
         currentSong.currentTime = ((currentSong.duration) * percent) / 100
     })
+
+
+    hambmenu.addEventListener("click", ()=>{
+
+        tempmenu.classList.toggle("leftmenuoff");
+        tempmenu.classList.toggle("leftmenuon");
+    });
+
+    bgnd.addEventListener("click", ()=>{
+        tempmenu.classList.toggle("leftmenuoff");
+        tempmenu.classList.toggle("leftmenuon");
+    })
+
 }
 
 main();
