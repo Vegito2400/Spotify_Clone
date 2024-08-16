@@ -91,6 +91,7 @@ ul li .library{
 }
 .hamburger{
     position: absolute;
+    left: -9999px;
 }
 .hamburger img{
     /* visibility: hidden; */
